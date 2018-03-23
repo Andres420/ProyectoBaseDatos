@@ -28,19 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Server");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("DataBases");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(42, 39);
+            this.treeView1.Location = new System.Drawing.Point(12, 12);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Server";
-            treeNode1.Text = "Server";
+            treeNode1.Name = "nDB";
+            treeNode1.Text = "DataBases";
+            treeNode2.Name = "nServer";
+            treeNode2.Text = "Server";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            this.treeView1.Size = new System.Drawing.Size(313, 379);
+            treeNode2});
+            this.treeView1.Size = new System.Drawing.Size(143, 327);
             this.treeView1.TabIndex = 0;
             // 
             // Form1
