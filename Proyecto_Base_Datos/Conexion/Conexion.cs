@@ -15,9 +15,9 @@ namespace Conexion
         NpgsqlDataReader dr;
         public Conexion()
         {
-            conn = new NpgsqlConnection("");
+            conn = new NpgsqlConnection(Configuracion.ConStr);
         }
-
+        
         public void CerrarConexion()
         {
             dr.Close();
