@@ -28,24 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("localhost");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("DataBases");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("LocalHost", new System.Windows.Forms.TreeNode[] {
             treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
+            treeNode2});
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.cmsMenuDataBase = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsMenuDataBase.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
             // 
             this.treeView1.Location = new System.Drawing.Point(12, 12);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "nlh";
-            treeNode1.Text = "localhost";
-            treeNode2.Name = "nServer";
-            treeNode2.Text = "Server";
+            treeNode1.ContextMenuStrip = this.cmsMenuDataBase;
+            treeNode1.Name = "nBD";
+            treeNode1.Text = "DataBases";
+            treeNode2.Name = "nlh";
+            treeNode2.Text = "LocalHost";
+            treeNode3.Name = "nServer";
+            treeNode3.Text = "Server";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode3});
             this.treeView1.Size = new System.Drawing.Size(143, 327);
             this.treeView1.TabIndex = 0;
+            // 
+            // cmsMenuDataBase
+            // 
+            this.cmsMenuDataBase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.cmsMenuDataBase.Name = "cmsMenuDataBase";
+            this.cmsMenuDataBase.Size = new System.Drawing.Size(160, 26);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem1.Text = "Create Database";
             // 
             // Form1
             // 
@@ -56,6 +78,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.cmsMenuDataBase.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -63,6 +86,8 @@
         #endregion
 
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ContextMenuStrip cmsMenuDataBase;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
