@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CapaGrafica
 {
-    public partial class Form1 : Form
+    public partial class Menu : Form
     {
-        public Form1()
+        public Menu()
         {
             InitializeComponent();
         }
@@ -24,7 +24,10 @@ namespace CapaGrafica
 
         private void ActualizarArbol()
         {
-            
+
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add("hola");
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add("hola2");
+
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)

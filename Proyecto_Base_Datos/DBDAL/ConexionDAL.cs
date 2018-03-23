@@ -47,11 +47,25 @@ namespace DBDAL
                 return false;
             }
         }
-        public NpgsqlDataReader LeerTabla(string consulta)
+
+
+        public List<String> LeerTabla(string consulta)
         {
             cmd = new NpgsqlCommand(consulta,conn);
             dr = cmd.ExecuteReader();
-            return dr;
+
+            return ConvertirTabla(dr);
+        }
+
+        private List<string> ConvertirTabla(NpgsqlDataReader dr)
+        {
+            List<string> bases = new List<string>();
+            while (dr.Read())
+            {
+                bases.Add(dr.GetString(0));
+            }
+            CerrarConexion();
+            return bases;
         }
     }
 }
