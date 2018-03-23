@@ -19,7 +19,12 @@ namespace CapaGrafica
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            ActualizarArbol();
+        }
 
+        private void ActualizarArbol()
+        {
+            
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)

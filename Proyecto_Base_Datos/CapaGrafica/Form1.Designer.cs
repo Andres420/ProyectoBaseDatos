@@ -36,6 +36,7 @@
             treeNode2});
             this.cmsMenuDataBase = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeDB = new System.Windows.Forms.TreeView();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.cmsMenuDataBase.SuspendLayout();
             this.SuspendLayout();
@@ -72,12 +73,14 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.treeView1);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.treeDB);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "PgAdmin 4";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.cmsMenuDataBase.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -86,7 +89,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView treeDB;
         private System.Windows.Forms.ContextMenuStrip cmsMenuDataBase;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
