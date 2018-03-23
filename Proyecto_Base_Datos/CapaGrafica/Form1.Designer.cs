@@ -34,10 +34,10 @@
             treeNode1});
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
             treeNode2});
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cmsMenuDataBase = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.treeDB = new System.Windows.Forms.TreeView();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.cmsMenuDataBase.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,8 +57,8 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 12);
-            this.treeView1.Name = "treeView1";
+            this.treeDB.Location = new System.Drawing.Point(12, 12);
+            this.treeDB.Name = "treeView1";
             treeNode1.ContextMenuStrip = this.cmsMenuDataBase;
             treeNode1.Name = "nBD";
             treeNode1.Text = "DataBases";
@@ -66,10 +66,10 @@
             treeNode2.Text = "LocalHost";
             treeNode3.Name = "nServer";
             treeNode3.Text = "Server";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            this.treeDB.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
-            this.treeView1.Size = new System.Drawing.Size(143, 327);
-            this.treeView1.TabIndex = 0;
+            this.treeDB.Size = new System.Drawing.Size(143, 327);
+            this.treeDB.TabIndex = 0;
             // 
             // Form1
             // 
