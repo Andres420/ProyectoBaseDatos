@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("DataBases");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("localhost");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
             treeNode1});
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -38,8 +38,8 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(12, 12);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "nDB";
-            treeNode1.Text = "DataBases";
+            treeNode1.Name = "nlh";
+            treeNode1.Text = "localhost";
             treeNode2.Name = "nServer";
             treeNode2.Text = "Server";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {

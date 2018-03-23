@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaGrafica", "CapaGrafica\CapaGrafica.csproj", "{1422798C-8566-42E3-A50D-7DA93483A122}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conexion", "Conexion\Conexion.csproj", "{74D188BF-337D-44BC-8909-D4FE8722B303}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1422798C-8566-42E3-A50D-7DA93483A122}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1422798C-8566-42E3-A50D-7DA93483A122}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1422798C-8566-42E3-A50D-7DA93483A122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74D188BF-337D-44BC-8909-D4FE8722B303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74D188BF-337D-44BC-8909-D4FE8722B303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74D188BF-337D-44BC-8909-D4FE8722B303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74D188BF-337D-44BC-8909-D4FE8722B303}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
