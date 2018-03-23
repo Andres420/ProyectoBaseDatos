@@ -34,6 +34,7 @@
             treeNode1});
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
             treeNode2});
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cmsMenuDataBase = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.treeDB = new System.Windows.Forms.TreeView();
@@ -42,20 +43,22 @@
             // 
             // cmsMenuDataBase
             // 
+            this.cmsMenuDataBase.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsMenuDataBase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.cmsMenuDataBase.Name = "cmsMenuDataBase";
-            this.cmsMenuDataBase.Size = new System.Drawing.Size(160, 26);
+            this.cmsMenuDataBase.Size = new System.Drawing.Size(189, 28);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 24);
             this.toolStripMenuItem1.Text = "Create Database";
             // 
             // treeDB
             // 
-            this.treeDB.Location = new System.Drawing.Point(12, 12);
+            this.treeDB.Location = new System.Drawing.Point(16, 15);
+            this.treeDB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.treeDB.Name = "treeDB";
             treeNode1.ContextMenuStrip = this.cmsMenuDataBase;
             treeNode1.Name = "nBD";
@@ -66,17 +69,19 @@
             treeNode3.Text = "Server";
             this.treeDB.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
-            this.treeDB.Size = new System.Drawing.Size(143, 327);
+            this.treeDB.Size = new System.Drawing.Size(189, 402);
             this.treeDB.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.treeDB);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "PgAdmin 4";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.cmsMenuDataBase.ResumeLayout(false);
             this.ResumeLayout(false);
