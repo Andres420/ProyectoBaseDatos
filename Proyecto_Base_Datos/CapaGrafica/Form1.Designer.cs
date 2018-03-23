@@ -34,11 +34,25 @@
             treeNode1});
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
             treeNode2});
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.cmsMenuDataBase = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.cmsMenuDataBase.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // cmsMenuDataBase
+            // 
+            this.cmsMenuDataBase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.cmsMenuDataBase.Name = "cmsMenuDataBase";
+            this.cmsMenuDataBase.Size = new System.Drawing.Size(181, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Create Database";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // treeView1
             // 
@@ -55,19 +69,6 @@
             treeNode3});
             this.treeView1.Size = new System.Drawing.Size(143, 327);
             this.treeView1.TabIndex = 0;
-            // 
-            // cmsMenuDataBase
-            // 
-            this.cmsMenuDataBase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.cmsMenuDataBase.Name = "cmsMenuDataBase";
-            this.cmsMenuDataBase.Size = new System.Drawing.Size(160, 26);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
-            this.toolStripMenuItem1.Text = "Create Database";
             // 
             // Form1
             // 

@@ -21,5 +21,11 @@ namespace CapaGrafica
         {
 
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CrearBaseDatos cbd = new CrearBaseDatos();
+            cbd.ShowDialog();
+        }
     }
 }
