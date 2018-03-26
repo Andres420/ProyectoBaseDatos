@@ -25,6 +25,8 @@ namespace DBDAL
             conn.Close();
 
         }
+
+
         public bool Consulta(string consul)
         {
             int cambio = 0;
@@ -48,7 +50,12 @@ namespace DBDAL
             }
         }
 
-
+        /// <summary>
+        /// Lee datos de la base de datos dependiendo del string que recibe por consulta
+        /// y los retorna en una lista como strings
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <returns></returns>
         public List<String> LeerTabla(string consulta)
         {
             cmd = new NpgsqlCommand(consulta,conn);
@@ -57,6 +64,12 @@ namespace DBDAL
             return ConvertirTabla(dr);
         }
 
+        /// <summary>
+        /// Convierte el NpgsqlDataReader en string que
+        /// se guardan en una lista y se retornan
+        /// </summary>
+        /// <param name="dr">NpgsqlDataReader contiene los datos a convertir</param>
+        /// <returns>Lista con los datos deseados en formato de string</returns>
         private List<string> ConvertirTabla(NpgsqlDataReader dr)
         {
             List<string> bases = new List<string>();

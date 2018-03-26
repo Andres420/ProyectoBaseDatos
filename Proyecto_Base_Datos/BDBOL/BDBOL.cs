@@ -17,5 +17,10 @@ namespace BDBOL
         {
             return crearDAL.CrearBaseDatos("CREATE DATABASE " + nombrenuevo + ";");
         }
+
+        public List<string> CargarNombreDB()
+        {
+            return crearDAL.CargarNombres("SELECT datname FROM pg_database WHERE datname != 'template1' AND datname != 'template0';");
+        }
     }
 }

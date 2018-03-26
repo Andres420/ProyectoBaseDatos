@@ -17,5 +17,10 @@ namespace DBDAL
         {
             return conexion.Consulta(crearbasedatos);
         }
+
+        public List<string> CargarNombres(string consulta)
+        {
+            return conexion.LeerTabla(consulta);
+        }
     }
 }

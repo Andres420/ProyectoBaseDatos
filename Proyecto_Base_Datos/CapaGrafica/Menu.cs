@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BDBOL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace CapaGrafica
 {
     public partial class Menu : Form
     {
+        private bdBOL dbbol;
+
         public Menu()
         {
             InitializeComponent();
@@ -19,15 +22,23 @@ namespace CapaGrafica
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dbbol = new bdBOL();
             ActualizarArbol();
         }
-
+        /// <summary>
+        /// Se encarga de cargar los nombres de las bases de datos
+        /// y los agrega como strings al arbol
+        /// </summary>
         private void ActualizarArbol()
         {
-
-            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add("hola");
-            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add("hola2");
-
+            // treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add() linea para agregar las bases de datos al arbol
+            List<string> bases = dbbol.CargarNombreDB();
+            foreach (var item in bases)
+            {
+                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item);
+                //TODO: Implementar metodo para agregar todas las opciones a cada base de datos
+            }
+    
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
