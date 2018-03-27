@@ -33,18 +33,50 @@ namespace CapaGrafica
         {
             // treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add() linea para agregar las bases de datos al arbol
             List<string> bases = dbbol.CargarNombreDB();
+            int cont = 0;
             foreach (var item in bases)
             {
                 treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item);
+                 AgregarCompo(cont);
+                
+                
+                cont++;
                 //TODO: Implementar metodo para agregar todas las opciones a cada base de datos
             }
     
+        }
+
+        /// <summary>
+        /// Agrega los componentes basicos a cada base de datos
+        /// </summary>
+        /// <param name="cont">int que hace referencia al nodo que
+        /// debe agregar los componentes</param>
+        private void AgregarCompo(int cont)
+        {
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Casts");
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Catalogs");
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Event Triggers");
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Extensions");
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Foreign Data Wrappers");
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Languages");
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Schemas");
+            //AgregarSquemas(cont);
+        }
+
+        private void AgregarSquemas(int cont)
+        {
+            throw new NotImplementedException();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CrearBaseDatos cbd = new CrearBaseDatos();
             cbd.ShowDialog();
+        }
+
+        private void treeDB_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            //se pide la clave del servidor
         }
     }
 }

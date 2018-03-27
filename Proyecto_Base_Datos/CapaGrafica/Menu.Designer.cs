@@ -71,6 +71,7 @@
             treeNode3});
             this.treeDB.Size = new System.Drawing.Size(342, 429);
             this.treeDB.TabIndex = 0;
+            this.treeDB.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDB_AfterSelect);
             // 
             // Menu
             // 
