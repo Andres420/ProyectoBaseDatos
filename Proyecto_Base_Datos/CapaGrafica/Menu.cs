@@ -14,6 +14,7 @@ namespace CapaGrafica
     public partial class Menu : Form
     {
         private bdBOL dbbol;
+        private string baseDatos;
 
         public Menu()
         {
@@ -37,6 +38,7 @@ namespace CapaGrafica
             foreach (var item in bases)
             {
                 treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item);
+                baseDatos = item;
                  AgregarCompo(cont);
                 
                 
@@ -82,10 +84,16 @@ namespace CapaGrafica
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Materialized Views");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Sequences");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Tables");
+            AgregarTablas(cont, 6, baseDatos);
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Trigger Functions");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Type");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Views");
             //Faltan metodos que carguen las vistas, las funciones, las tablas...
+        }
+
+        private void AgregarTablas(int cont, int v, string baseDatos)
+        {
+            throw new NotImplementedException();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
