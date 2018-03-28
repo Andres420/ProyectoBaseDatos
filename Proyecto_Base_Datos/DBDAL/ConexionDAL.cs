@@ -10,25 +10,37 @@ namespace DBDAL
 
     public class ConexionDAL
     {
+        private string conexion = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=clave123;Database=";
+        private string base_ = "postgres";
         NpgsqlCommand cmd;
         NpgsqlConnection conn;
         NpgsqlDataReader dr;
+
         public ConexionDAL()
         {
-            conn = new NpgsqlConnection(ConfiguracionDAL.ConStr);
+        }
+        private void AbrirConexionVieja()
+        {
+            conn = new NpgsqlConnection(conexion + base_);
+            conn.Open();
+        }
+
+        private void AbrirConexionNueva(string base_nueva)
+        {
+            conn = new NpgsqlConnection(conexion + base_nueva);
             conn.Open();
         }
 
         public void CerrarConexion()
         {
             if (dr != null) dr.Close();
-            conn.Close();
-
+            if(conn != null) conn.Close();
         }
 
 
         public bool Consulta(string consul)
         {
+            AbrirConexionVieja();
             int cambio = 0;
             try
             {
@@ -58,7 +70,8 @@ namespace DBDAL
         /// <returns></returns>
         public List<String> LeerTabla(string consulta)
         {
-            cmd = new NpgsqlCommand(consulta,conn);
+            AbrirConexionVieja();
+            cmd = new NpgsqlCommand(consulta, conn);
             dr = cmd.ExecuteReader();
 
             return ConvertirTabla(dr);
@@ -79,6 +92,25 @@ namespace DBDAL
             }
             CerrarConexion();
             return bases;
+        }
+
+        public string BuscarTablas(string bases)
+        {
+            CerrarConexion();
+            string tablas = "";
+            AbrirConexionNueva(bases);
+            cmd = new NpgsqlCommand("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';", conn);
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    tablas += "|" + dr.GetString(0);
+                }
+            }
+            CerrarConexion();
+
+            return tablas;
         }
     }
 }

@@ -45,7 +45,7 @@ namespace CapaGrafica
                 cont++;
                 //TODO: Implementar metodo para agregar todas las opciones a cada base de datos
             }
-    
+            
         }
 
         /// <summary>
@@ -84,16 +84,20 @@ namespace CapaGrafica
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Materialized Views");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Sequences");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Tables");
-            AgregarTablas(cont, 6, baseDatos);
+            //int cont, int v ?
+            string[] tablas = AgregarTablas(baseDatos);
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Trigger Functions");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Type");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Views");
             //Faltan metodos que carguen las vistas, las funciones, las tablas...
         }
-
-        private void AgregarTablas(int cont, int v, string baseDatos)
+        //int cont, int v ?
+        private string[] AgregarTablas(string baseDatos)
         {
-            throw new NotImplementedException();
+            string tablas = dbbol.BuscarTablas(baseDatos);
+            tablas = tablas.Remove(tablas.Length - 1);
+            string[] tablas_ = tablas.Split('|');
+            return tablas_;
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -101,7 +105,6 @@ namespace CapaGrafica
             CrearBaseDatos cbd = new CrearBaseDatos();
             cbd.ShowDialog();
         }
-
         private void treeDB_AfterSelect(object sender, TreeViewEventArgs e)
         {
             //se pide la clave del servidor

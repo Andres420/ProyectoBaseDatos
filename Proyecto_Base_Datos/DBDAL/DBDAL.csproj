@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionDAL.cs" />
-    <Compile Include="ConfiguracionDAL.cs" />
     <Compile Include="dbDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

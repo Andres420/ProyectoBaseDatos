@@ -8,19 +8,24 @@ namespace BDBOL
 {
     public class bdBOL
     {
-        dbDAL crearDAL;
+        dbDAL usarDAL;
         public bdBOL()
         {
-            crearDAL = new dbDAL();
+            usarDAL = new dbDAL();
         }
         public bool CrearBaseDatos(string nombrenuevo)
         {
-            return crearDAL.CrearBaseDatos("CREATE DATABASE " + nombrenuevo + ";");
+            return usarDAL.CrearBaseDatos("CREATE DATABASE " + nombrenuevo + ";");
         }
 
         public List<string> CargarNombreDB()
         {
-            return crearDAL.CargarNombres("SELECT datname FROM pg_database WHERE datname != 'template1' AND datname != 'template0';");
+            return usarDAL.CargarNombres("SELECT datname FROM pg_database WHERE datistemplate = false;");
+        }
+
+        public string BuscarTablas(string baseDatos)
+        {
+            return usarDAL.BuscarTablas(baseDatos);
         }
     }
 }

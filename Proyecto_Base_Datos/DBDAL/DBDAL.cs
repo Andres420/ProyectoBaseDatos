@@ -22,5 +22,10 @@ namespace DBDAL
         {
             return conexion.LeerTabla(consulta);
         }
+
+        public string BuscarTablas(string baseDatos)
+        {
+            return conexion.BuscarTablas(baseDatos);
+        }
     }
 }
