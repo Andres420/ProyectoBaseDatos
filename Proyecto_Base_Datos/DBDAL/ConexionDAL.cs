@@ -105,7 +105,7 @@ namespace DBDAL
             {
                 while (dr.Read())
                 {
-                    tablas += "|" + dr.GetString(0);
+                    tablas += dr.GetString(0) + "|";
                 }
             }
             CerrarConexion();

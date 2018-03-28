@@ -86,6 +86,11 @@ namespace CapaGrafica
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Tables");
             //int cont, int v ?
             string[] tablas = AgregarTablas(baseDatos);
+            foreach (string tabla in tablas)
+            {
+                //Agregue la tabla
+                Console.WriteLine(tabla);
+            }
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Trigger Functions");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Type");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Views");
@@ -95,8 +100,18 @@ namespace CapaGrafica
         private string[] AgregarTablas(string baseDatos)
         {
             string tablas = dbbol.BuscarTablas(baseDatos);
-            tablas = tablas.Remove(tablas.Length - 1);
-            string[] tablas_ = tablas.Split('|');
+            
+            string[] tablas_;
+            if (!tablas.Equals(String.Empty))
+            {
+                tablas = tablas.Remove(tablas.Length - 1);
+                tablas_ = tablas.Split('|');
+            }
+            else
+            {
+                tablas_ = new string[] {""};
+            }
+
             return tablas_;
         }
 
