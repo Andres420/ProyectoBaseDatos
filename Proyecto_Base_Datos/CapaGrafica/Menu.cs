@@ -39,7 +39,7 @@ namespace CapaGrafica
             {
                 treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item);
                 baseDatos = item;
-                 AgregarCompo(cont);
+                AgregarCompo(cont);
                 
                 
                 cont++;
@@ -89,7 +89,9 @@ namespace CapaGrafica
             foreach (string tabla in tablas)
             {
                 //Agregue la tabla
-                Console.WriteLine(tabla);
+                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes[10].Nodes.Add(tabla);
+
+                //Console.WriteLine(tabla);
             }
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Trigger Functions");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Type");
