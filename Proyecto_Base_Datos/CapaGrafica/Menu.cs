@@ -15,6 +15,7 @@ namespace CapaGrafica
     {
         private bdBOL dbbol;
         private string baseDatos;
+        private List<String> bases;
 
         public Menu()
         {
@@ -24,6 +25,10 @@ namespace CapaGrafica
         private void Form1_Load(object sender, EventArgs e)
         {
             dbbol = new bdBOL();
+            comboBox1.Visible = false;
+            richTextBox1.Visible = false;
+            button1.Visible = false;
+            button2.Visible = false;
             ActualizarArbol();
         }
         /// <summary>
@@ -33,19 +38,19 @@ namespace CapaGrafica
         private void ActualizarArbol()
         {
             // treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add() linea para agregar las bases de datos al arbol
-            List<string> bases = dbbol.CargarNombreDB();
+            bases = dbbol.CargarNombreDB();
             int cont = 0;
             foreach (var item in bases)
             {
                 treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item);
                 baseDatos = item;
                 AgregarCompo(cont);
-                
-                
+
+
                 cont++;
                 //TODO: Implementar metodo para agregar todas las opciones a cada base de datos
             }
-            
+
         }
 
         /// <summary>
@@ -102,7 +107,7 @@ namespace CapaGrafica
         private string[] AgregarTablas(string baseDatos)
         {
             string tablas = dbbol.BuscarTablas(baseDatos);
-            
+
             string[] tablas_;
             if (!tablas.Equals(String.Empty))
             {
@@ -111,7 +116,7 @@ namespace CapaGrafica
             }
             else
             {
-                tablas_ = new string[] {""};
+                tablas_ = new string[] { "" };
             }
 
             return tablas_;
@@ -121,10 +126,37 @@ namespace CapaGrafica
         {
             CrearBaseDatos cbd = new CrearBaseDatos();
             cbd.ShowDialog();
+            ActualizarArbol();
         }
         private void treeDB_AfterSelect(object sender, TreeViewEventArgs e)
         {
             //se pide la clave del servidor
+        }
+
+        private void queryToolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comboBox1.Visible = true;
+            richTextBox1.Visible = true;
+            button1.Visible = true;
+            button2.Visible = true;
+            CargarBaseDatos();
+            comboBox1.SelectedIndex = 0;
+        }
+
+        private void CargarBaseDatos()
+        {
+            foreach (var item in bases)
+            {
+                comboBox1.Items.Add(item);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            comboBox1.Visible = false;
+            richTextBox1.Visible = false;
+            button1.Visible = false;
+            button2.Visible = false;
         }
     }
 }
