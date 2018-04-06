@@ -15,7 +15,7 @@ namespace DBDAL
         }
         public bool CrearBaseDatos(string crearbasedatos)
         {
-            return conexion.Consulta(crearbasedatos);
+            return conexion.Consulta(crearbasedatos,null);
         }
 
         public List<string> CargarNombres(string consulta)
@@ -26,6 +26,11 @@ namespace DBDAL
         public string BuscarTablas(string baseDatos)
         {
             return conexion.BuscarTablas(baseDatos);
+        }
+
+        public bool Consulta(string consulta, string bd)
+        {
+            return conexion.Consulta(consulta, bd);
         }
     }
 }

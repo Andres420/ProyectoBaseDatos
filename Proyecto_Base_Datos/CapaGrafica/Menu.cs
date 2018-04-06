@@ -25,9 +25,9 @@ namespace CapaGrafica
         private void Form1_Load(object sender, EventArgs e)
         {
             dbbol = new bdBOL();
-            comboBox1.Visible = false;
-            richTextBox1.Visible = false;
-            button1.Visible = false;
+            cbBases.Visible = false;
+            rtboxConsulta.Visible = false;
+            btbEjecutar.Visible = false;
             button2.Visible = false;
             ActualizarArbol();
         }
@@ -135,28 +135,49 @@ namespace CapaGrafica
 
         private void queryToolsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            comboBox1.Visible = true;
-            richTextBox1.Visible = true;
-            button1.Visible = true;
+            cbBases.Visible = true;
+            rtboxConsulta.Visible = true;
+            btbEjecutar.Visible = true;
             button2.Visible = true;
             CargarBaseDatos();
-            comboBox1.SelectedIndex = 0;
+            cbBases.SelectedIndex = 0;
         }
 
         private void CargarBaseDatos()
         {
             foreach (var item in bases)
             {
-                comboBox1.Items.Add(item);
+                cbBases.Items.Add(item);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            comboBox1.Visible = false;
-            richTextBox1.Visible = false;
-            button1.Visible = false;
+            cbBases.Visible = false;
+            rtboxConsulta.Visible = false;
+            btbEjecutar.Visible = false;
             button2.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string consulta = rtboxConsulta.Text;
+                if (dbbol.Consulta(consulta, cbBases.Text))
+                {
+                    rcOutPut.Text = "BIEN";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                rcOutPut.Text = ex.Message;
+            }
+            
+
+
+
         }
     }
 }

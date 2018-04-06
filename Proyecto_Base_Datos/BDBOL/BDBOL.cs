@@ -27,5 +27,10 @@ namespace BDBOL
         {
             return usarDAL.BuscarTablas(baseDatos);
         }
+
+        public Boolean Consulta(string consulta, string bd)
+        {
+            return usarDAL.Consulta(consulta, bd);
+        }
     }
 }
