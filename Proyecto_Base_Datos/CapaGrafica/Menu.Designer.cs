@@ -56,19 +56,19 @@
             this.cmsMenuDataBase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.cmsMenuDataBase.Name = "cmsMenuDataBase";
-            this.cmsMenuDataBase.Size = new System.Drawing.Size(189, 28);
+            this.cmsMenuDataBase.Size = new System.Drawing.Size(160, 26);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(188, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
             this.toolStripMenuItem1.Text = "Create Database";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // treeDB
             // 
-            this.treeDB.Location = new System.Drawing.Point(15, 42);
-            this.treeDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.treeDB.Location = new System.Drawing.Point(11, 34);
+            this.treeDB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.treeDB.Name = "treeDB";
             treeNode1.ContextMenuStrip = this.cmsMenuDataBase;
             treeNode1.Name = "nBD";
@@ -79,16 +79,15 @@
             treeNode3.Text = "Server";
             this.treeDB.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
-            this.treeDB.Size = new System.Drawing.Size(455, 527);
+            this.treeDB.Size = new System.Drawing.Size(342, 429);
             this.treeDB.TabIndex = 0;
             this.treeDB.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDB_AfterSelect);
             // 
             // rtboxConsulta
             // 
-            this.rtboxConsulta.Location = new System.Drawing.Point(516, 103);
-            this.rtboxConsulta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtboxConsulta.Location = new System.Drawing.Point(387, 83);
             this.rtboxConsulta.Name = "rtboxConsulta";
-            this.rtboxConsulta.Size = new System.Drawing.Size(649, 399);
+            this.rtboxConsulta.Size = new System.Drawing.Size(488, 325);
             this.rtboxConsulta.TabIndex = 1;
             this.rtboxConsulta.Text = "";
             // 
@@ -99,8 +98,7 @@
             this.herramientasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1192, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(894, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -109,22 +107,21 @@
             this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.queryToolsToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.herramientasToolStripMenuItem.Text = "Herramientas";
             // 
             // queryToolsToolStripMenuItem
             // 
             this.queryToolsToolStripMenuItem.Name = "queryToolsToolStripMenuItem";
-            this.queryToolsToolStripMenuItem.Size = new System.Drawing.Size(160, 26);
+            this.queryToolsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.queryToolsToolStripMenuItem.Text = "Abrir Query";
             this.queryToolsToolStripMenuItem.Click += new System.EventHandler(this.queryToolsToolStripMenuItem_Click);
             // 
             // btbEjecutar
             // 
-            this.btbEjecutar.Location = new System.Drawing.Point(843, 36);
-            this.btbEjecutar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btbEjecutar.Location = new System.Drawing.Point(632, 29);
             this.btbEjecutar.Name = "btbEjecutar";
-            this.btbEjecutar.Size = new System.Drawing.Size(100, 28);
+            this.btbEjecutar.Size = new System.Drawing.Size(75, 23);
             this.btbEjecutar.TabIndex = 3;
             this.btbEjecutar.Text = "Ejecutar";
             this.btbEjecutar.UseVisualStyleBackColor = true;
@@ -132,10 +129,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(951, 36);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(713, 29);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
+            this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
             this.button2.Text = "Salir";
             this.button2.UseVisualStyleBackColor = true;
@@ -145,25 +141,25 @@
             // 
             this.cbBases.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBases.FormattingEnabled = true;
-            this.cbBases.Location = new System.Drawing.Point(516, 38);
-            this.cbBases.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbBases.Location = new System.Drawing.Point(387, 31);
             this.cbBases.Name = "cbBases";
-            this.cbBases.Size = new System.Drawing.Size(317, 24);
+            this.cbBases.Size = new System.Drawing.Size(239, 21);
             this.cbBases.TabIndex = 5;
             // 
             // rcOutPut
             // 
-            this.rcOutPut.Location = new System.Drawing.Point(516, 532);
+            this.rcOutPut.Location = new System.Drawing.Point(387, 432);
+            this.rcOutPut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rcOutPut.Name = "rcOutPut";
-            this.rcOutPut.Size = new System.Drawing.Size(649, 133);
+            this.rcOutPut.Size = new System.Drawing.Size(488, 109);
             this.rcOutPut.TabIndex = 6;
             this.rcOutPut.Text = "";
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1192, 687);
+            this.ClientSize = new System.Drawing.Size(894, 558);
             this.Controls.Add(this.rcOutPut);
             this.Controls.Add(this.cbBases);
             this.Controls.Add(this.button2);
@@ -173,7 +169,6 @@
             this.Controls.Add(this.treeDB);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Menu";
             this.Text = "PgAdmin 4";
             this.Load += new System.EventHandler(this.Form1_Load);
