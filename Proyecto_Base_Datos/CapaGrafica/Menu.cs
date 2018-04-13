@@ -37,6 +37,8 @@ namespace CapaGrafica
         /// </summary>
         private void ActualizarArbol()
         {
+
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Clear();
             // treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add() linea para agregar las bases de datos al arbol
             bases = dbbol.CargarNombreDB();
             int cont = 0;
@@ -157,14 +159,16 @@ namespace CapaGrafica
             rtboxConsulta.Visible = false;
             btbEjecutar.Visible = false;
             button2.Visible = false;
+            rcOutPut.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
+                
                 string consulta = rtboxConsulta.Text;
-                if (dbbol.Consulta(consulta, cbBases.Text))
+                if (dbbol.Consulta(consulta, cbBases.SelectedItem.ToString()))
                 {
                     rcOutPut.Text = "BIEN"; 
                 }
@@ -178,6 +182,16 @@ namespace CapaGrafica
 
 
 
+        }
+
+        private void cmsMenuDataBase_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void updateDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ActualizarArbol();
         }
     }
 }
