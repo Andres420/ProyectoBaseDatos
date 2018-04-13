@@ -42,10 +42,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.queryToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btbEjecutar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.cbBases = new System.Windows.Forms.ComboBox();
             this.rcOutPut = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btbEjecutar = new System.Windows.Forms.Button();
             this.cmsMenuDataBase.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +68,7 @@
             // treeDB
             // 
             this.treeDB.Location = new System.Drawing.Point(11, 34);
-            this.treeDB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.treeDB.Margin = new System.Windows.Forms.Padding(2);
             this.treeDB.Name = "treeDB";
             treeNode1.ContextMenuStrip = this.cmsMenuDataBase;
             treeNode1.Name = "nBD";
@@ -117,26 +117,6 @@
             this.queryToolsToolStripMenuItem.Text = "Abrir Query";
             this.queryToolsToolStripMenuItem.Click += new System.EventHandler(this.queryToolsToolStripMenuItem_Click);
             // 
-            // btbEjecutar
-            // 
-            this.btbEjecutar.Location = new System.Drawing.Point(632, 29);
-            this.btbEjecutar.Name = "btbEjecutar";
-            this.btbEjecutar.Size = new System.Drawing.Size(75, 23);
-            this.btbEjecutar.TabIndex = 3;
-            this.btbEjecutar.Text = "Ejecutar";
-            this.btbEjecutar.UseVisualStyleBackColor = true;
-            this.btbEjecutar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(713, 29);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Salir";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // cbBases
             // 
             this.cbBases.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -149,11 +129,35 @@
             // rcOutPut
             // 
             this.rcOutPut.Location = new System.Drawing.Point(387, 432);
-            this.rcOutPut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rcOutPut.Margin = new System.Windows.Forms.Padding(2);
             this.rcOutPut.Name = "rcOutPut";
             this.rcOutPut.Size = new System.Drawing.Size(488, 109);
             this.rcOutPut.TabIndex = 6;
             this.rcOutPut.Text = "";
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::CapaGrafica.Properties.Resources.if_button_close_352915;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(689, 29);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(50, 50);
+            this.button2.TabIndex = 4;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btbEjecutar
+            // 
+            this.btbEjecutar.BackgroundImage = global::CapaGrafica.Properties.Resources.if_icon_ios7_bolt_211696;
+            this.btbEjecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btbEjecutar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btbEjecutar.Location = new System.Drawing.Point(632, 29);
+            this.btbEjecutar.Name = "btbEjecutar";
+            this.btbEjecutar.Size = new System.Drawing.Size(50, 50);
+            this.btbEjecutar.TabIndex = 3;
+            this.btbEjecutar.UseVisualStyleBackColor = true;
+            this.btbEjecutar.Click += new System.EventHandler(this.button1_Click);
             // 
             // Menu
             // 
