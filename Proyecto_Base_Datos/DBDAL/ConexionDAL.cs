@@ -11,11 +11,12 @@ namespace DBDAL
     public class ConexionDAL
     {
         //291297
-        private string conexion = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=postgres;Database=";
+        private string conexion = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=291297;Database=";
         private string base_ = "postgres";
         NpgsqlCommand cmd;
         NpgsqlConnection conn;
         NpgsqlDataReader dr;
+        NpgsqlDataAdapter da;
 
         public ConexionDAL()
         {
@@ -55,6 +56,7 @@ namespace DBDAL
             {
                 cmd = new NpgsqlCommand(consul, conn);
                 cambio = cmd.ExecuteNonQuery();
+                
                 CerrarConexion();
             }
             catch (Exception ex)
@@ -106,6 +108,7 @@ namespace DBDAL
             return bases;
         }
 
+
         public string BuscarTablas(string bases)
         {
             CerrarConexion();
@@ -124,5 +127,28 @@ namespace DBDAL
 
             return tablas;
         }
+
+
+
+        public NpgsqlDataReader ConsultaSelect(string consul, string bd)
+        {
+           
+            AbrirConexionNueva(bd);
+            int cambio = 0;
+            try
+            {
+                cmd = new NpgsqlCommand(consul, conn);
+                dr = cmd.ExecuteReader();
+                
+                
+                return dr;
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

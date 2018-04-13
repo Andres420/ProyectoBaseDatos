@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Npgsql;
 
 namespace DBDAL
 {
@@ -31,6 +32,16 @@ namespace DBDAL
         public bool Consulta(string consulta, string bd)
         {
             return conexion.Consulta(consulta, bd);
+        }
+
+        public NpgsqlDataReader ConsultaSelect(string consulta, string bd)
+        {
+            return conexion.ConsultaSelect(consulta, bd);
+        }
+
+        public void CerrarConsulta()
+        {
+            conexion.CerrarConexion();
         }
     }
 }

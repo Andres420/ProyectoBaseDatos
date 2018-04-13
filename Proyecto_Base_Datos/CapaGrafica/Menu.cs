@@ -44,7 +44,7 @@ namespace CapaGrafica
             int cont = 0;
             foreach (var item in bases)
             {
-                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item);
+                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item);/// aqui evento
                 baseDatos = item;
                 AgregarCompo(cont);
 
@@ -166,11 +166,20 @@ namespace CapaGrafica
         {
             try
             {
-                
-                string consulta = rtboxConsulta.Text;
+                Char[] cont;
+                string consulta = rtboxConsulta.Text.Trim();
+                cont = consulta.ToCharArray();
+                string s = cont[0].ToString() + cont[1].ToString() + cont[2].ToString() + cont[3].ToString() + cont[4].ToString() + cont[5].ToString();
+                if (s.Equals("Select"))
+                {
+                    Tables t = new Tables(cbBases.SelectedItem.ToString(), consulta);
+                    t.Show();
+                }
+
                 if (dbbol.Consulta(consulta, cbBases.SelectedItem.ToString()))
                 {
-                    rcOutPut.Text = "BIEN"; 
+                    rcOutPut.Text = "Query successfully complete";
+                    ActualizarArbol();
                 }
             }
             catch (Exception ex)
