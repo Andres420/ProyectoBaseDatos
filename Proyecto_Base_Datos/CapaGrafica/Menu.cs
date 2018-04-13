@@ -166,7 +166,7 @@ namespace CapaGrafica
                 string consulta = rtboxConsulta.Text;
                 if (dbbol.Consulta(consulta, cbBases.Text))
                 {
-                    rcOutPut.Text = "BIEN";
+                    rcOutPut.Text = "BIEN"; 
                 }
             }
             catch (Exception ex)

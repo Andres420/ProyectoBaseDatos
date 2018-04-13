@@ -32,8 +32,10 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("DataBases");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("LocalHost", new System.Windows.Forms.TreeNode[] {
             treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("PostgreSQL 9.6", new System.Windows.Forms.TreeNode[] {
             treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
+            treeNode3});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.cmsMenuDataBase = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +69,7 @@
             // 
             // treeDB
             // 
-            this.treeDB.Location = new System.Drawing.Point(15, 42);
+            this.treeDB.Location = new System.Drawing.Point(15, 38);
             this.treeDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.treeDB.Name = "treeDB";
             treeNode1.ContextMenuStrip = this.cmsMenuDataBase;
@@ -75,18 +77,20 @@
             treeNode1.Text = "DataBases";
             treeNode2.Name = "nlh";
             treeNode2.Text = "LocalHost";
-            treeNode3.Name = "nServer";
-            treeNode3.Text = "Server";
+            treeNode3.Name = "nPostgreSQL";
+            treeNode3.Text = "PostgreSQL 9.6";
+            treeNode4.Name = "nServer";
+            treeNode4.Text = "Server";
             this.treeDB.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
-            this.treeDB.Size = new System.Drawing.Size(455, 527);
+            treeNode4});
+            this.treeDB.Size = new System.Drawing.Size(455, 531);
             this.treeDB.TabIndex = 0;
             this.treeDB.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDB_AfterSelect);
             // 
             // rtboxConsulta
             // 
             this.rtboxConsulta.Location = new System.Drawing.Point(516, 103);
-            this.rtboxConsulta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtboxConsulta.Margin = new System.Windows.Forms.Padding(4);
             this.rtboxConsulta.Name = "rtboxConsulta";
             this.rtboxConsulta.Size = new System.Drawing.Size(649, 399);
             this.rtboxConsulta.TabIndex = 1;
@@ -122,7 +126,7 @@
             // btbEjecutar
             // 
             this.btbEjecutar.Location = new System.Drawing.Point(843, 36);
-            this.btbEjecutar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btbEjecutar.Margin = new System.Windows.Forms.Padding(4);
             this.btbEjecutar.Name = "btbEjecutar";
             this.btbEjecutar.Size = new System.Drawing.Size(100, 28);
             this.btbEjecutar.TabIndex = 3;
@@ -133,7 +137,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(951, 36);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 4;
@@ -146,7 +150,7 @@
             this.cbBases.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBases.FormattingEnabled = true;
             this.cbBases.Location = new System.Drawing.Point(516, 38);
-            this.cbBases.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbBases.Margin = new System.Windows.Forms.Padding(4);
             this.cbBases.Name = "cbBases";
             this.cbBases.Size = new System.Drawing.Size(317, 24);
             this.cbBases.TabIndex = 5;
@@ -173,7 +177,7 @@
             this.Controls.Add(this.treeDB);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu";
             this.Text = "PgAdmin 4";
             this.Load += new System.EventHandler(this.Form1_Load);
