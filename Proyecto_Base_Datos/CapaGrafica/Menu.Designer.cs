@@ -46,22 +46,27 @@
             this.rcOutPut = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.btbEjecutar = new System.Windows.Forms.Button();
+            this.updateDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.npgsqlDbColumnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmsMenuDataBase.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.npgsqlDbColumnBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // cmsMenuDataBase
             // 
             this.cmsMenuDataBase.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsMenuDataBase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.updateDatabaseToolStripMenuItem});
             this.cmsMenuDataBase.Name = "cmsMenuDataBase";
-            this.cmsMenuDataBase.Size = new System.Drawing.Size(160, 26);
+            this.cmsMenuDataBase.Size = new System.Drawing.Size(164, 48);
+            this.cmsMenuDataBase.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMenuDataBase_Opening);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
             this.toolStripMenuItem1.Text = "Create Database";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -98,7 +103,7 @@
             this.herramientasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(894, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(888, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,14 +112,14 @@
             this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.queryToolsToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.herramientasToolStripMenuItem.Text = "Herramientas";
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.herramientasToolStripMenuItem.Text = "Tools";
             // 
             // queryToolsToolStripMenuItem
             // 
             this.queryToolsToolStripMenuItem.Name = "queryToolsToolStripMenuItem";
-            this.queryToolsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.queryToolsToolStripMenuItem.Text = "Abrir Query";
+            this.queryToolsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.queryToolsToolStripMenuItem.Text = "Open Query";
             this.queryToolsToolStripMenuItem.Click += new System.EventHandler(this.queryToolsToolStripMenuItem_Click);
             // 
             // cbBases
@@ -159,11 +164,22 @@
             this.btbEjecutar.UseVisualStyleBackColor = true;
             this.btbEjecutar.Click += new System.EventHandler(this.button1_Click);
             // 
+            // updateDatabaseToolStripMenuItem
+            // 
+            this.updateDatabaseToolStripMenuItem.Name = "updateDatabaseToolStripMenuItem";
+            this.updateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.updateDatabaseToolStripMenuItem.Text = "Update Database";
+            this.updateDatabaseToolStripMenuItem.Click += new System.EventHandler(this.updateDatabaseToolStripMenuItem_Click);
+            // 
+            // npgsqlDbColumnBindingSource
+            // 
+            this.npgsqlDbColumnBindingSource.DataSource = typeof(Npgsql.Schema.NpgsqlDbColumn);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(894, 558);
+            this.ClientSize = new System.Drawing.Size(888, 558);
             this.Controls.Add(this.rcOutPut);
             this.Controls.Add(this.cbBases);
             this.Controls.Add(this.button2);
@@ -179,6 +195,7 @@
             this.cmsMenuDataBase.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.npgsqlDbColumnBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,6 +214,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cbBases;
         private System.Windows.Forms.RichTextBox rcOutPut;
+        private System.Windows.Forms.ToolStripMenuItem updateDatabaseToolStripMenuItem;
+        private System.Windows.Forms.BindingSource npgsqlDbColumnBindingSource;
     }
 }
 

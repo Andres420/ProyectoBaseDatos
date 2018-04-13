@@ -32,5 +32,11 @@ namespace BDBOL
         {
             return usarDAL.Consulta(consulta, bd);
         }
+
+        public void AbrirNuevaConexion(string v)
+        {
+            ConexionDAL cdal = new ConexionDAL();
+            cdal.AbrirConexionNueva(v);
+        }
     }
 }
