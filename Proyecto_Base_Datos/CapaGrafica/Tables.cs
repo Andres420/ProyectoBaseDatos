@@ -34,8 +34,10 @@ namespace CapaGrafica
 
             DataTable table = new DataTable();
             table.Load(bdbol.ConsultaSelect(consulta, bd));
-            DataTableReader reader = new DataTableReader(table);
-            DataSetTables.Load(bdbol.ConsultaSelect(consulta, bd), LoadOption.OverwriteChanges, table);
+            
+    
+            ///DataTableReader reader = new DataTableReader(table);
+                DataSetTables.Load(bdbol.ConsultaSelect(consulta, bd), LoadOption.OverwriteChanges, table);
             //bdbol.ConsultaSelect(consulta, bd)
 
             dataGridView1.DataSource = DataSetTables;
