@@ -20,33 +20,34 @@ namespace CapaGrafica
         public Tables(string bd, string consulta)
         {
             InitializeComponent();
+            this.CenterToParent();
             this.bd = bd;
             this.consulta = consulta;
         }
 
         private void Tables_Load(object sender, EventArgs e)
         {
-            ds = new DataSet();
-            bdbol = new bdBOL();
-            //DataTableReader reader = bdbol.ConsultaSelect(consulta, bd);
+            try
+            {
+                bdbol = new bdBOL();
+                ds = new DataSet();
+                DataTable table = new DataTable();
+                ds.Tables.Add(table);
 
-            // DataSetTables.Tables.Add(bdbol.ConsultaSelect(consulta, bd));
+                //Crear transportador
 
-            DataTable table = new DataTable();
-            table.Load(bdbol.ConsultaSelect(consulta, bd));
-            
-    
-            ///DataTableReader reader = new DataTableReader(table);
-                DataSetTables.Load(bdbol.ConsultaSelect(consulta, bd), LoadOption.OverwriteChanges, table);
-            //bdbol.ConsultaSelect(consulta, bd)
+                bdbol.ConsultaSelect(consulta, bd).Fill(table);
 
-            dataGridView1.DataSource = DataSetTables;
-            
-            //DataSetTables.Load(bdbol.ConsultaSelect(consulta, bd),Load,);
-            
-            bdbol.CerrarConsulta();
-
-
+                dataGridView1.DataSource = table;
+                bdbol.CerrarConsulta();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                this.Close();
+                
+            }
+      
         }
     }
 }

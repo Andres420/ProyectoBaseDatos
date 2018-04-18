@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace DBDAL
             return conexion.Consulta(consulta, bd);
         }
 
-        public NpgsqlDataReader ConsultaSelect(string consulta, string bd)
+        public NpgsqlDataAdapter ConsultaSelect(string consulta, string bd)
         {
             return conexion.ConsultaSelect(consulta, bd);
         }

@@ -17,6 +17,7 @@ namespace CapaGrafica
         public CrearBaseDatos()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void CrearBaseDatos_Load(object sender, EventArgs e)

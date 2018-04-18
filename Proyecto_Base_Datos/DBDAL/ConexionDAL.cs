@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ namespace DBDAL
         private string base_ = "postgres";
         NpgsqlCommand cmd;
         NpgsqlConnection conn;
+        SqlConnection connection;
         NpgsqlDataReader dr;
         NpgsqlDataAdapter da;
 
@@ -31,6 +34,12 @@ namespace DBDAL
         {
             conn = new NpgsqlConnection(conexion + base_nueva);
             conn.Open();
+        }
+
+        public void NuevaConAdapter(string base_nueva)
+        {
+            connection = new SqlConnection(conexion + base_nueva);
+            connection.Open();
         }
 
         public void CerrarConexion()
@@ -130,18 +139,19 @@ namespace DBDAL
 
 
 
-        public NpgsqlDataReader ConsultaSelect(string consul, string bd)
+        public NpgsqlDataAdapter ConsultaSelect(string consul, string bd)
         {
-           
+
             AbrirConexionNueva(bd);
-            int cambio = 0;
             try
             {
-                cmd = new NpgsqlCommand(consul, conn);
-                dr = cmd.ExecuteReader();
+                //cmd = new NpgsqlCommand(consul, conn);
+                //cmd.CommandType = CommandType.StoredProcedure;
+                da = new NpgsqlDataAdapter();
+                da.SelectCommand = new NpgsqlCommand(consul, conn);
                 
-                
-                return dr;
+
+                return da;
                 
             }
             catch (Exception ex)

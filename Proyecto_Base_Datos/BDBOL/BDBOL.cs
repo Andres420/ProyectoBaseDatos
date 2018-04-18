@@ -52,7 +52,7 @@ namespace BDBOL
             cdal.AbrirConexionNueva(v);
         }
 
-        public NpgsqlDataReader ConsultaSelect(string consulta, string bd)
+        public NpgsqlDataAdapter ConsultaSelect(string consulta, string bd)
         {
             return usarDAL.ConsultaSelect(consulta, bd);
             

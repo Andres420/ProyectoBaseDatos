@@ -37,6 +37,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.cmsMenuDataBase = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeDB = new System.Windows.Forms.TreeView();
             this.rtboxConsulta = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -46,7 +47,6 @@
             this.rcOutPut = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.btbEjecutar = new System.Windows.Forms.Button();
-            this.updateDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.npgsqlDbColumnBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmsMenuDataBase.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -70,6 +70,13 @@
             this.toolStripMenuItem1.Text = "Create Database";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
+            // updateDatabaseToolStripMenuItem
+            // 
+            this.updateDatabaseToolStripMenuItem.Name = "updateDatabaseToolStripMenuItem";
+            this.updateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.updateDatabaseToolStripMenuItem.Text = "Update Database";
+            this.updateDatabaseToolStripMenuItem.Click += new System.EventHandler(this.updateDatabaseToolStripMenuItem_Click);
+            // 
             // treeDB
             // 
             this.treeDB.Location = new System.Drawing.Point(11, 34);
@@ -90,6 +97,7 @@
             // 
             // rtboxConsulta
             // 
+            this.rtboxConsulta.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtboxConsulta.Location = new System.Drawing.Point(387, 83);
             this.rtboxConsulta.Name = "rtboxConsulta";
             this.rtboxConsulta.Size = new System.Drawing.Size(488, 325);
@@ -118,7 +126,7 @@
             // queryToolsToolStripMenuItem
             // 
             this.queryToolsToolStripMenuItem.Name = "queryToolsToolStripMenuItem";
-            this.queryToolsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.queryToolsToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.queryToolsToolStripMenuItem.Text = "Open Query";
             this.queryToolsToolStripMenuItem.Click += new System.EventHandler(this.queryToolsToolStripMenuItem_Click);
             // 
@@ -133,9 +141,12 @@
             // 
             // rcOutPut
             // 
-            this.rcOutPut.Location = new System.Drawing.Point(387, 432);
+            this.rcOutPut.BackColor = System.Drawing.Color.White;
+            this.rcOutPut.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rcOutPut.Location = new System.Drawing.Point(387, 413);
             this.rcOutPut.Margin = new System.Windows.Forms.Padding(2);
             this.rcOutPut.Name = "rcOutPut";
+            this.rcOutPut.ReadOnly = true;
             this.rcOutPut.Size = new System.Drawing.Size(488, 109);
             this.rcOutPut.TabIndex = 6;
             this.rcOutPut.Text = "";
@@ -164,13 +175,6 @@
             this.btbEjecutar.UseVisualStyleBackColor = true;
             this.btbEjecutar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // updateDatabaseToolStripMenuItem
-            // 
-            this.updateDatabaseToolStripMenuItem.Name = "updateDatabaseToolStripMenuItem";
-            this.updateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.updateDatabaseToolStripMenuItem.Text = "Update Database";
-            this.updateDatabaseToolStripMenuItem.Click += new System.EventHandler(this.updateDatabaseToolStripMenuItem_Click);
-            // 
             // npgsqlDbColumnBindingSource
             // 
             this.npgsqlDbColumnBindingSource.DataSource = typeof(Npgsql.Schema.NpgsqlDbColumn);
@@ -179,6 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(888, 558);
             this.Controls.Add(this.rcOutPut);
             this.Controls.Add(this.cbBases);
