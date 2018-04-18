@@ -48,7 +48,13 @@ namespace DBDAL
             if (conn != null) conn.Close();
         }
 
-
+        /// <summary>
+        /// Realiza cualquier consulta u string sql que
+        /// se necesite en la base de datos que se desea
+        /// </summary>
+        /// <param name="consul">string sql </param>
+        /// <param name="bd">string nombre de la base de datos</param>
+        /// <returns>true si fue posible, de lo contrario enviara el error generado</returns>
         public bool Consulta(string consul, string bd)
         {
             //if (String.IsNullOrEmpty(bd))
@@ -117,7 +123,11 @@ namespace DBDAL
             return bases;
         }
 
-
+        /// <summary>
+        /// Se encarga de cargar todas las tablas de las bases de datos
+        /// </summary>
+        /// <param name="bases"></param>
+        /// <returns></returns>
         public string BuscarTablas(string bases)
         {
             CerrarConexion();
@@ -138,7 +148,13 @@ namespace DBDAL
         }
 
 
-
+        /// <summary>
+        /// Se encarga de realizar un select mediante un dataadapter
+        /// que luego es retornado para ser mostrado
+        /// </summary>
+        /// <param name="consul">string el select que se desea realizar</param>
+        /// <param name="bd">string nombre de la base de datos a la que se quiere acceder</param>
+        /// <returns> NpgsqlDataAdapter que contiene todos los datos de la tabla solicitada</returns>
         public NpgsqlDataAdapter ConsultaSelect(string consul, string bd)
         {
 

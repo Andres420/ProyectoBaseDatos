@@ -171,7 +171,7 @@ namespace CapaGrafica
                 string consulta = rtboxConsulta.Text.Trim();
                 cont = consulta.ToCharArray();
                 string s = cont[0].ToString() + cont[1].ToString() + cont[2].ToString() + cont[3].ToString() + cont[4].ToString() + cont[5].ToString();
-                if (s.Equals("Select"))
+                if (s.ToLower().Equals("select"))
                 {
                     Tables t = new Tables(cbBases.SelectedItem.ToString(), consulta);
                     t.Show();
