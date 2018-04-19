@@ -15,9 +15,9 @@ namespace DBDAL
         {
             conexion = new ConexionDAL();
         }
-        public bool CrearBaseDatos(string crearbasedatos)
+        public bool CRUDBaseDatos(string crearbasedatos)
         {
-            return conexion.Consulta(crearbasedatos,null);
+            return conexion.Consulta(crearbasedatos, "postgres");
         }
 
         public List<string> CargarNombres(string consulta)
@@ -44,5 +44,6 @@ namespace DBDAL
         {
             conexion.CerrarConexion();
         }
+        
     }
 }

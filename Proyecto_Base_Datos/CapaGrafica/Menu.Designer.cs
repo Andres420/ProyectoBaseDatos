@@ -37,7 +37,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.cmsMenuDataBase = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeDB = new System.Windows.Forms.TreeView();
             this.rtboxConsulta = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -57,25 +56,17 @@
             // 
             this.cmsMenuDataBase.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsMenuDataBase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.updateDatabaseToolStripMenuItem});
+            this.toolStripMenuItem1});
             this.cmsMenuDataBase.Name = "cmsMenuDataBase";
-            this.cmsMenuDataBase.Size = new System.Drawing.Size(164, 48);
+            this.cmsMenuDataBase.Size = new System.Drawing.Size(181, 48);
             this.cmsMenuDataBase.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMenuDataBase_Opening);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
-            this.toolStripMenuItem1.Text = "Create Database";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Database Options";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // updateDatabaseToolStripMenuItem
-            // 
-            this.updateDatabaseToolStripMenuItem.Name = "updateDatabaseToolStripMenuItem";
-            this.updateDatabaseToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.updateDatabaseToolStripMenuItem.Text = "Update Database";
-            this.updateDatabaseToolStripMenuItem.Click += new System.EventHandler(this.updateDatabaseToolStripMenuItem_Click);
             // 
             // treeDB
             // 
@@ -120,7 +111,7 @@
             this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.queryToolsToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.herramientasToolStripMenuItem.Text = "Tools";
             // 
             // queryToolsToolStripMenuItem
@@ -219,7 +210,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cbBases;
         private System.Windows.Forms.RichTextBox rcOutPut;
-        private System.Windows.Forms.ToolStripMenuItem updateDatabaseToolStripMenuItem;
         private System.Windows.Forms.BindingSource npgsqlDbColumnBindingSource;
     }
 }

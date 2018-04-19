@@ -26,13 +26,13 @@ namespace DBDAL
         }
         private void AbrirConexionVieja()
         {
-            conn = new NpgsqlConnection(conexion + base_);
+            conn = new NpgsqlConnection(conexion + base_ + ";Pooling=false;");
             conn.Open();
         }
 
         public void AbrirConexionNueva(string base_nueva)
         {
-            conn = new NpgsqlConnection(conexion + base_nueva);
+            conn = new NpgsqlConnection(conexion + base_nueva + ";Pooling=false;");
             conn.Open();
         }
 
@@ -44,8 +44,12 @@ namespace DBDAL
 
         public void CerrarConexion()
         {
-            if (dr != null) dr.Close();
+
+            if (dr != null && dr.HasRows) dr.Dispose();
+            if (dr != null && dr.HasRows) dr.Close();
+            if (conn != null) conn.Dispose();
             if (conn != null) conn.Close();
+
         }
 
         /// <summary>
@@ -71,11 +75,11 @@ namespace DBDAL
             {
                 cmd = new NpgsqlCommand(consul, conn);
                 cambio = cmd.ExecuteNonQuery();
-                
                 CerrarConexion();
             }
             catch (Exception ex)
             {
+                CerrarConexion();
                 throw new Exception(ex.Message);
             }
 
@@ -100,29 +104,28 @@ namespace DBDAL
         public List<String> LeerTabla(string consulta)
         {
             AbrirConexionVieja();
+            List<string> bases = new List<string>(); ;
             cmd = new NpgsqlCommand(consulta, conn);
-            dr = cmd.ExecuteReader();
-
-            return ConvertirTabla(dr);
-        }
-
-        /// <summary>
-        /// Convierte el NpgsqlDataReader en string que
-        /// se guardan en una lista y se retornan
-        /// </summary>
-        /// <param name="dr">NpgsqlDataReader contiene los datos a convertir</param>
-        /// <returns>Lista con los datos deseados en formato de string</returns>
-        private List<string> ConvertirTabla(NpgsqlDataReader dr)
-        {
-            List<string> bases = new List<string>();
-            while (dr.Read())
+            try
             {
-                bases.Add(dr.GetString(0));
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    bases.Add(dr.GetString(0));
+                }
+                dr.Close();
+                dr.Dispose();
+                CerrarConexion();
             }
-            CerrarConexion();
+            catch (Exception ex)
+            {
+                CerrarConexion();
+            }
+
             return bases;
         }
 
+       
         /// <summary>
         /// Se encarga de cargar todas las tablas de las bases de datos
         /// </summary>
@@ -172,6 +175,7 @@ namespace DBDAL
             }
             catch (Exception ex)
             {
+                CerrarConexion();
                 throw new Exception(ex.Message);
             }
         }

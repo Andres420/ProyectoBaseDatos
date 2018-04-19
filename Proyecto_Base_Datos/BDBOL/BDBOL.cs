@@ -16,9 +16,9 @@ namespace BDBOL
         {
             usarDAL = new dbDAL();
         }
-        public bool CrearBaseDatos(string nombrenuevo)
+        public bool CRUDBaseDatos(string crud_base)
         {
-            return usarDAL.CrearBaseDatos("CREATE DATABASE " + nombrenuevo + ";");
+            return usarDAL.CRUDBaseDatos(crud_base);
         }
 
         public List<string> CargarNombreDB()
@@ -58,5 +58,6 @@ namespace BDBOL
             
 
         }
+        
     }
 }
