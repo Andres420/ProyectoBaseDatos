@@ -168,9 +168,16 @@ namespace DBDAL
                 //cmd.CommandType = CommandType.StoredProcedure;
                 da = new NpgsqlDataAdapter();
                 da.SelectCommand = new NpgsqlCommand(consul, conn);
-                
 
-                return da;
+
+                if (da != null)
+                {
+                    return da;
+                }
+                else
+                {
+                    return null;
+                }
                 
             }
             catch (Exception ex)
