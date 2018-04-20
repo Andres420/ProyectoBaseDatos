@@ -1,4 +1,5 @@
 ﻿using BDBOL;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -171,13 +172,19 @@ namespace CapaGrafica
                 string consulta = rtboxConsulta.Text.Trim();
                 cont = consulta.ToCharArray();
                 string s = cont[0].ToString() + cont[1].ToString() + cont[2].ToString() + cont[3].ToString() + cont[4].ToString() + cont[5].ToString();
+                NpgsqlDataAdapter a = dbbol.ConsultaSelect(consulta, cbBases.SelectedItem.ToString());
                 if (s.ToLower().Equals("select"))
                 {
                     Tables t = new Tables(cbBases.SelectedItem.ToString(), consulta);
                     t.Show();
                 }
-
-                if (dbbol.Consulta(consulta, cbBases.SelectedItem.ToString()))
+                
+                else if ( a != null  )
+                {
+                    Tables t = new Tables(a);
+                    t.Show();
+                }
+                else if (dbbol.Consulta(consulta, cbBases.SelectedItem.ToString()))
                 {
                     rcOutPut.Text = "Query successfully complete";
                     ActualizarArbol();

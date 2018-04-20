@@ -58,13 +58,13 @@
             this.cmsMenuDataBase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.cmsMenuDataBase.Name = "cmsMenuDataBase";
-            this.cmsMenuDataBase.Size = new System.Drawing.Size(181, 48);
+            this.cmsMenuDataBase.Size = new System.Drawing.Size(168, 26);
             this.cmsMenuDataBase.Opening += new System.ComponentModel.CancelEventHandler(this.cmsMenuDataBase_Opening);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
             this.toolStripMenuItem1.Text = "Database Options";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -111,7 +111,7 @@
             this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.queryToolsToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.herramientasToolStripMenuItem.Text = "Tools";
             // 
             // queryToolsToolStripMenuItem
