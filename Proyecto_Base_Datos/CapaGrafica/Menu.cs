@@ -48,18 +48,19 @@ namespace CapaGrafica
             int cont = 0;
             foreach (var item in bases)
             {
-               
+               BDMenu = new ContextMenuStrip();
 
                 //Create some menu items.
                 ToolStripMenuItem viewLabel = new ToolStripMenuItem();
                 viewLabel.Text = "View Options";
+                viewLabel.Click += this.ClickView;
                 ToolStripMenuItem FLabel = new ToolStripMenuItem();
-                viewLabel.Text = "Function Options";
+                FLabel.Text = "Function Options";
                 ToolStripMenuItem TLabel = new ToolStripMenuItem();
-                viewLabel.Text = "Triggers Options";
-                BDMenu.Items.AddRange(new ToolStripMenuItem[] { viewLabel });
+                TLabel.Text = "Triggers Options";
+                BDMenu.Items.AddRange(new ToolStripMenuItem[] { viewLabel,FLabel,TLabel });
                 BDMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BD_Click);
-                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item);/// aqui evento
+                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item).ContextMenuStrip = BDMenu;/// aqui evento
                 baseDatos = item;
                 AgregarCompo(cont);
 
@@ -68,6 +69,11 @@ namespace CapaGrafica
                 //TODO: Implementar metodo para agregar todas las opciones a cada base de datos
             }
 
+        }
+
+        private void ClickView(object sender, EventArgs e)
+        {
+            ////Evento para mostrar la vara de las vistas
         }
 
         /// <summary>
@@ -166,7 +172,7 @@ namespace CapaGrafica
             TreeNode p1 = n.Parent;
             TreeNode p2 = p1.Parent;
             TreeNode p3 = p2.Parent;
-            string based = p3.ToString());
+            string based = p3.ToString();
 
             ActualizarArbol();
         }
@@ -174,7 +180,7 @@ namespace CapaGrafica
         private void BD_Click(object sender, EventArgs e)
         {
            
-            ActualizarArbol();
+            
         }
 
 
