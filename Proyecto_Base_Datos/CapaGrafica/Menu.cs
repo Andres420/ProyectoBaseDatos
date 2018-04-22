@@ -17,6 +17,7 @@ namespace CapaGrafica
         private bdBOL dbbol;
         private string baseDatos;
         private List<String> bases;
+        private ContextMenuStrip BDMenu;
 
         public Menu()
         {
@@ -32,6 +33,7 @@ namespace CapaGrafica
             btbEjecutar.Visible = false;
             button2.Visible = false;
             ActualizarArbol();
+            BDMenu = new ContextMenuStrip();
         }
         /// <summary>
         /// Se encarga de cargar los nombres de las bases de datos
@@ -46,7 +48,19 @@ namespace CapaGrafica
             int cont = 0;
             foreach (var item in bases)
             {
-                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item);/// aqui evento
+               BDMenu = new ContextMenuStrip();
+
+                //Create some menu items.
+                ToolStripMenuItem viewLabel = new ToolStripMenuItem();
+                viewLabel.Text = "View Options";
+                viewLabel.Click += this.ClickView;
+                ToolStripMenuItem FLabel = new ToolStripMenuItem();
+                FLabel.Text = "Function Options";
+                ToolStripMenuItem TLabel = new ToolStripMenuItem();
+                TLabel.Text = "Triggers Options";
+                BDMenu.Items.AddRange(new ToolStripMenuItem[] { viewLabel,FLabel,TLabel });
+                BDMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BD_Click);
+                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item).ContextMenuStrip = BDMenu;/// aqui evento
                 baseDatos = item;
                 AgregarCompo(cont);
 
@@ -55,6 +69,11 @@ namespace CapaGrafica
                 //TODO: Implementar metodo para agregar todas las opciones a cada base de datos
             }
 
+        }
+
+        private void ClickView(object sender, EventArgs e)
+        {
+            ////Evento para mostrar la vara de las vistas
         }
 
         /// <summary>
@@ -92,7 +111,16 @@ namespace CapaGrafica
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Functions");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Materialized Views");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Sequences");
-            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Tables");
+            
+
+            ContextMenuStrip tableMenu = new ContextMenuStrip();
+
+            //Create some menu items.
+            ToolStripMenuItem oLabel = new ToolStripMenuItem();
+            oLabel.Text = "Table Options";
+            tableMenu.Items.AddRange(new ToolStripMenuItem[]{oLabel});
+            tableMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Table_Click);
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Tables").ContextMenuStrip = tableMenu;
             //int cont, int v ?
             string[] tablas = AgregarTablas(baseDatos);
             foreach (string tabla in tablas)
@@ -132,9 +160,33 @@ namespace CapaGrafica
             cbd.ShowDialog();
             ActualizarArbol();
         }
+
+        /// <summary>
+        /// Se debe crear la ventana para la tabla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Table_Click(object sender, EventArgs e)
+        {
+            TreeNode n = treeDB.SelectedNode;
+            TreeNode p1 = n.Parent;
+            TreeNode p2 = p1.Parent;
+            TreeNode p3 = p2.Parent;
+            string based = p3.ToString();
+
+            ActualizarArbol();
+        }
+
+        private void BD_Click(object sender, EventArgs e)
+        {
+           
+            
+        }
+
+
         private void treeDB_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //se pide la clave del servidor
+            
         }
 
         private void queryToolsToolStripMenuItem_Click(object sender, EventArgs e)
