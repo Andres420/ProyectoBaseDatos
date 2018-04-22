@@ -34,7 +34,6 @@
             treeNode1});
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Server", new System.Windows.Forms.TreeNode[] {
             treeNode2});
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.cmsMenuDataBase = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.treeDB = new System.Windows.Forms.TreeView();
@@ -183,7 +182,6 @@
             this.Controls.Add(this.rtboxConsulta);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.treeDB);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Menu";
             this.Text = "PgAdmin 4";
