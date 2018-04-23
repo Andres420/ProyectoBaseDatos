@@ -14,7 +14,7 @@ namespace DBDAL
     {
         //291297
         //clave123
-        private string conexion = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=postgres;Database=";
+        private string conexion = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=clave123;Database=";
         private string base_ = "postgres";
         NpgsqlCommand cmd;
         NpgsqlConnection conn;

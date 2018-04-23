@@ -56,8 +56,10 @@ namespace CapaGrafica
                 viewLabel.Click += this.ClickView;
                 ToolStripMenuItem FLabel = new ToolStripMenuItem();
                 FLabel.Text = "Function Options";
+                FLabel.Click += this.FunctionView;
                 ToolStripMenuItem TLabel = new ToolStripMenuItem();
                 TLabel.Text = "Triggers Options";
+                TLabel.Click += this.TriggerView;
                 BDMenu.Items.AddRange(new ToolStripMenuItem[] { viewLabel, FLabel, TLabel });
                 BDMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BD_Click);
                 treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item).ContextMenuStrip = BDMenu;/// aqui evento
@@ -71,9 +73,25 @@ namespace CapaGrafica
 
         }
 
+        ///Se llama la ventana con las funciones de las vistas
         private void ClickView(object sender, EventArgs e)
         {
-            ////Evento para mostrar la vara de las vistas
+            TreeNode n = treeDB.SelectedNode;
+            string baseSeleccionada = n.ToString(); //Tiene que tener marcado el nodo de la base de datos
+        }
+
+        /// Se llama la ventana de las funciones
+        private void FunctionView(object sender, EventArgs e)
+        {
+            TreeNode n = treeDB.SelectedNode;
+            string baseSeleccionada = n.ToString(); //Tiene que tener marcado el nodo de la base de datos
+        }
+
+        ///Se llama la ventana con los triggers
+        private void TriggerView(object sender, EventArgs e)
+        {
+            TreeNode n = treeDB.SelectedNode;
+            string baseSeleccionada = n.ToString(); //Tiene que tener marcado el nodo de la base de datos
         }
 
         /// <summary>
