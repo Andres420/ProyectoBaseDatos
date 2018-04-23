@@ -48,7 +48,7 @@ namespace CapaGrafica
             int cont = 0;
             foreach (var item in bases)
             {
-               BDMenu = new ContextMenuStrip();
+                BDMenu = new ContextMenuStrip();
 
                 //Create some menu items.
                 ToolStripMenuItem viewLabel = new ToolStripMenuItem();
@@ -56,9 +56,11 @@ namespace CapaGrafica
                 viewLabel.Click += this.ClickView;
                 ToolStripMenuItem FLabel = new ToolStripMenuItem();
                 FLabel.Text = "Function Options";
+                FLabel.Click += this.FunctionView;
                 ToolStripMenuItem TLabel = new ToolStripMenuItem();
                 TLabel.Text = "Triggers Options";
-                BDMenu.Items.AddRange(new ToolStripMenuItem[] { viewLabel,FLabel,TLabel });
+                TLabel.Click += this.TriggerView;
+                BDMenu.Items.AddRange(new ToolStripMenuItem[] { viewLabel, FLabel, TLabel });
                 BDMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BD_Click);
                 treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(item).ContextMenuStrip = BDMenu;/// aqui evento
                 baseDatos = item;
@@ -71,9 +73,25 @@ namespace CapaGrafica
 
         }
 
+        ///Se llama la ventana con las funciones de las vistas
         private void ClickView(object sender, EventArgs e)
         {
-            ////Evento para mostrar la vara de las vistas
+            TreeNode n = treeDB.SelectedNode;
+            string baseSeleccionada = n.ToString(); //Tiene que tener marcado el nodo de la base de datos
+        }
+
+        /// Se llama la ventana de las funciones
+        private void FunctionView(object sender, EventArgs e)
+        {
+            TreeNode n = treeDB.SelectedNode;
+            string baseSeleccionada = n.ToString(); //Tiene que tener marcado el nodo de la base de datos
+        }
+
+        ///Se llama la ventana con los triggers
+        private void TriggerView(object sender, EventArgs e)
+        {
+            TreeNode n = treeDB.SelectedNode;
+            string baseSeleccionada = n.ToString(); //Tiene que tener marcado el nodo de la base de datos
         }
 
         /// <summary>
@@ -89,9 +107,50 @@ namespace CapaGrafica
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Extensions");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Foreign Data Wrappers");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Languages");
-            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Schemas");
-            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes.Add("public");
+            ContextMenuStrip squemaMenu = new ContextMenuStrip();
+            ToolStripMenuItem aLabel = new ToolStripMenuItem();
+            aLabel.Text = "Create Squema";
+            squemaMenu.Items.AddRange(new ToolStripMenuItem[] { aLabel });
+            squemaMenu.MouseClick += new MouseEventHandler(this.CrearSquema);
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes.Add("Schemas").ContextMenuStrip = squemaMenu;
+            string[] schemas = AgregarSquemas_();
+            foreach (string schema in schemas)
+            {
+                //Agregue la tabla
+                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes.Add(schema);
+
+                //Console.WriteLine(tabla);
+            }
+
+
+            //Agregue la tabla
             AgregarSquemas(cont);
+
+
+        }
+
+        private string[] AgregarSquemas_()
+        {
+            string tablas = dbbol.BuscarSequema(baseDatos);
+
+            string[] tablas_;
+            if (!tablas.Equals(String.Empty))
+            {
+                tablas = tablas.Remove(tablas.Length - 1);
+                tablas_ = tablas.Split('|');
+            }
+            else
+            {
+                tablas_ = new string[] { "" };
+            }
+
+            return tablas_;
+        }
+
+        private void CrearSquema(object sender, MouseEventArgs e)
+        {
+            FrmCreateSquema frm = new FrmCreateSquema();
+            frm.Show();
         }
 
         /// <summary>
@@ -101,6 +160,7 @@ namespace CapaGrafica
         /// <param name="cont"></param>
         private void AgregarSquemas(int cont)
         {
+
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Collations");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Domains");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("FTS Configurations");
@@ -110,17 +170,31 @@ namespace CapaGrafica
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Foreign Tables");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Functions");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Materialized Views");
-            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Sequences");
-            
+            ContextMenuStrip sequenceMenu = new ContextMenuStrip();
+            ToolStripMenuItem aLabel = new ToolStripMenuItem();
+            aLabel.Text = "Create Sequence";
+            sequenceMenu.Items.AddRange(new ToolStripMenuItem[] { aLabel });
+            sequenceMenu.MouseClick += new MouseEventHandler(this.CrearSequence);
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Sequences").ContextMenuStrip = sequenceMenu;
+            string[] sequencias = AgregarSequencias(baseDatos);
+            foreach (string sequencia in sequencias)
+            {
+                //Agregue la tabla
+                treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes[9].Nodes.Add(sequencia);
+
+                //Console.WriteLine(tabla);
+            }
 
             ContextMenuStrip tableMenu = new ContextMenuStrip();
 
             //Create some menu items.
             ToolStripMenuItem oLabel = new ToolStripMenuItem();
             oLabel.Text = "Table Options";
-            tableMenu.Items.AddRange(new ToolStripMenuItem[]{oLabel});
+            tableMenu.Items.AddRange(new ToolStripMenuItem[] { oLabel });
             tableMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Table_Click);
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Tables").ContextMenuStrip = tableMenu;
+
+
             //int cont, int v ?
             string[] tablas = AgregarTablas(baseDatos);
             foreach (string tabla in tablas)
@@ -134,11 +208,30 @@ namespace CapaGrafica
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Type");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Views");
             //Faltan metodos que carguen las vistas, las funciones, las tablas...
+            
         }
         //int cont, int v ?
         private string[] AgregarTablas(string baseDatos)
         {
             string tablas = dbbol.BuscarTablas(baseDatos);
+
+            string[] tablas_;
+            if (!tablas.Equals(String.Empty))
+            {
+                tablas = tablas.Remove(tablas.Length - 1);
+                tablas_ = tablas.Split('|');
+            }
+            else
+            {
+                tablas_ = new string[] { "" };
+            }
+
+            return tablas_;
+        }
+
+        private string[] AgregarSequencias(string baseDatos)
+        {
+            string tablas = dbbol.BuscarSequencias(baseDatos);
 
             string[] tablas_;
             if (!tablas.Equals(String.Empty))
@@ -177,16 +270,23 @@ namespace CapaGrafica
             ActualizarArbol();
         }
 
+        private void CrearSequence(object sender, EventArgs e)
+        {
+            Console.WriteLine();
+            CrearSequenceFrm frm = new CrearSequenceFrm();
+            frm.Show();
+        }
+
         private void BD_Click(object sender, EventArgs e)
         {
-           
-            
+
+
         }
 
 
         private void treeDB_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            
+
         }
 
         private void queryToolsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -230,8 +330,8 @@ namespace CapaGrafica
                     Tables t = new Tables(cbBases.SelectedItem.ToString(), consulta);
                     t.Show();
                 }
-                
-                else if ( a != null  )
+
+                else if (a != null)
                 {
                     Tables t = new Tables(a);
                     t.Show();
@@ -247,7 +347,7 @@ namespace CapaGrafica
 
                 rcOutPut.Text = ex.Message;
             }
-            
+
 
 
 

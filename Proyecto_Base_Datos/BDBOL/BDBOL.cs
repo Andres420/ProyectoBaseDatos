@@ -31,6 +31,10 @@ namespace BDBOL
             return usarDAL.BuscarTablas(baseDatos);
         }
 
+        public string BuscarSequencias(string baseDatos)
+        {
+            return usarDAL.BuscarSequencias(baseDatos);
+        }
         public Boolean Consulta(string consulta, string bd)
         {
             return usarDAL.Consulta(consulta, bd);
@@ -58,6 +62,10 @@ namespace BDBOL
             
 
         }
-        
+
+        public string BuscarSequema(string baseDatos)
+        {
+            return usarDAL.BuscarSquema(baseDatos);
+        }
     }
 }

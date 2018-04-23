@@ -57,6 +57,18 @@
     <Compile Include="CrearBaseDatos.Designer.cs">
       <DependentUpon>CrearBaseDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrearSequenceFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearSequenceFrm.Designer.cs">
+      <DependentUpon>CrearSequenceFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateSquema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateSquema.Designer.cs">
+      <DependentUpon>FrmCreateSquema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +109,12 @@
     </Compile>
     <EmbeddedResource Include="CrearBaseDatos.resx">
       <DependentUpon>CrearBaseDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearSequenceFrm.resx">
+      <DependentUpon>CrearSequenceFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateSquema.resx">
+      <DependentUpon>FrmCreateSquema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
