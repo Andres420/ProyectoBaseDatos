@@ -104,6 +104,9 @@
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MenuFunciones.resx">
+      <DependentUpon>MenuFunciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuVistas.resx">
       <DependentUpon>MenuVistas.cs</DependentUpon>
     </EmbeddedResource>
