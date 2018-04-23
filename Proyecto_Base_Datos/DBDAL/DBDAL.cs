@@ -30,6 +30,11 @@ namespace DBDAL
             return conexion.BuscarTablas(baseDatos);
         }
 
+        public string BuscarSequencias(string baseDatos)
+        {
+            return conexion.BuscarSequencias(baseDatos);
+        }
+
         public bool Consulta(string consulta, string bd)
         {
             return conexion.Consulta(consulta, bd);
@@ -44,6 +49,10 @@ namespace DBDAL
         {
             conexion.CerrarConexion();
         }
-        
+
+        public string BuscarSquema(string baseDatos)
+        {
+            return conexion.BuscarSquemas(baseDatos);
+        }
     }
 }

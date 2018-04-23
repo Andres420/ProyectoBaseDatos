@@ -13,7 +13,8 @@ namespace DBDAL
     public class ConexionDAL
     {
         //291297
-        private string conexion = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=clave123;Database=";
+        //clave123
+        private string conexion = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=postgres;Database=";
         private string base_ = "postgres";
         NpgsqlCommand cmd;
         NpgsqlConnection conn;
@@ -50,6 +51,25 @@ namespace DBDAL
             if (conn != null) conn.Dispose();
             if (conn != null) conn.Close();
 
+        }
+
+        public string BuscarSquemas(string baseDatos)
+        {
+            CerrarConexion();
+            string sequencias = "";
+            AbrirConexionNueva(baseDatos);
+            cmd = new NpgsqlCommand("select nspname from pg_catalog.pg_namespace where nspname not like 'pg%' and nspname not like 'information_schema'; ", conn);
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    sequencias += dr.GetString(0) + "|";
+                }
+            }
+            CerrarConexion();
+
+            return sequencias;
         }
 
         /// <summary>
@@ -125,7 +145,7 @@ namespace DBDAL
             return bases;
         }
 
-       
+
         /// <summary>
         /// Se encarga de cargar todas las tablas de las bases de datos
         /// </summary>
@@ -149,6 +169,28 @@ namespace DBDAL
 
             return tablas;
         }
+
+        public string BuscarSequencias(string bases)
+        {
+            CerrarConexion();
+            string sequencias = "";
+            AbrirConexionNueva(bases);
+            cmd = new NpgsqlCommand("select sequence_name from information_schema.sequences; ", conn);
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    sequencias += dr.GetString(0) + "|";
+                }
+            }
+            CerrarConexion();
+
+            return sequencias;
+        }
+
+
+
 
 
         /// <summary>
@@ -178,7 +220,7 @@ namespace DBDAL
                 {
                     return null;
                 }
-                
+
             }
             catch (Exception ex)
             {
