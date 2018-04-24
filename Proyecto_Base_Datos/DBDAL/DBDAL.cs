@@ -40,6 +40,11 @@ namespace DBDAL
             return conexion.Consulta(consulta, bd);
         }
 
+        public List<string> CargarVistas(string vistas_db, string database)
+        {
+            return conexion.LeerVistas(vistas_db, database);
+        }
+
         public NpgsqlDataAdapter ConsultaSelect(string consulta, string bd)
         {
             return conexion.ConsultaSelect(consulta, bd);

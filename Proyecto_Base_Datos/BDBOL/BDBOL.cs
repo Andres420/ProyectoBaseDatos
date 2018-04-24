@@ -35,6 +35,12 @@ namespace BDBOL
         {
             return usarDAL.BuscarSequencias(baseDatos);
         }
+
+        public List<string> CargarVistas(string vistas_db, string database)
+        {
+            return usarDAL.CargarVistas(vistas_db,database);
+        }
+
         public Boolean Consulta(string consulta, string bd)
         {
             return usarDAL.Consulta(consulta, bd);
@@ -59,8 +65,6 @@ namespace BDBOL
         public NpgsqlDataAdapter ConsultaSelect(string consulta, string bd)
         {
             return usarDAL.ConsultaSelect(consulta, bd);
-            
-
         }
 
         public string BuscarSequema(string baseDatos)

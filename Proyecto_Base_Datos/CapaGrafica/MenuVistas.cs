@@ -21,13 +21,25 @@ namespace CapaGrafica
             InitializeComponent();
             this.database = database;
         }
+
         private void CargarCombos()
         {
-            //cbModificarVista.Items.Clear();cbEliminarVista.Items.Clear();
-            //cbModificarVista.SelectedIndex = 0;cbEliminarVista.SelectedIndex = 0;
-            //List<string> vistas = bdbol.CargarVistas(vistas_db, database);
-            //vistas.ForEach(delegate(string vista) { cbModificarVista.Items.Add(vista); cbEliminarVista.Items.Add(vista);});
+            cbModificarVista.Items.Clear();cbEliminarVista.Items.Clear();
+            List<string> vistas = bdbol.CargarVistas(vistas_db, database);
+            if (vistas.Count > 0)
+            {
+                vistas.ForEach(delegate (string vista) { cbModificarVista.Items.Add(vista); cbEliminarVista.Items.Add(vista); });
+                cbModificarVista.SelectedIndex = 0; cbEliminarVista.SelectedIndex = 0;
+                btnEliminarVista.Enabled = true;
+                btnModificarVista.Enabled = true;
+            }
+            else
+            {
+                btnEliminarVista.Enabled = false;
+                btnModificarVista.Enabled = false;
+            }
         }
+
         private void btnCrearVista_Click(object sender, EventArgs e)
         {
             try

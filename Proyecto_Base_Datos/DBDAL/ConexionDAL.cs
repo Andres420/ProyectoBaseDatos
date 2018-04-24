@@ -72,6 +72,7 @@ namespace DBDAL
             return sequencias;
         }
 
+
         /// <summary>
         /// Realiza cualquier consulta u string sql que
         /// se necesite en la base de datos que se desea
@@ -144,7 +145,35 @@ namespace DBDAL
 
             return bases;
         }
+        /// <summary>
+        /// Lee las vistas de la base de datos tambien puede funcionar para devolver nombre de trigger o funciones etc
+        /// </summary>
+        /// <param name="consulta"></param>
+        /// <param name="database"></param>
+        /// <returns>Retorna una lista de strings</returns>
+        public List<String> LeerVistas(string consulta,string database)
+        {
+            AbrirConexionNueva(database);
+            List<string> lista = new List<string>(); 
+            cmd = new NpgsqlCommand(consulta, conn);
+            try
+            {
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    lista.Add(dr.GetString(0));
+                }
+                dr.Close();
+                dr.Dispose();
+                CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                CerrarConexion();
+            }
 
+            return lista;
+        }
 
         /// <summary>
         /// Se encarga de cargar todas las tablas de las bases de datos

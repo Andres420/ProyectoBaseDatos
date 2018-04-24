@@ -78,6 +78,9 @@ namespace CapaGrafica
         {
             TreeNode n = treeDB.SelectedNode;
             string baseSeleccionada = n.ToString(); //Tiene que tener marcado el nodo de la base de datos
+            MenuVistas mv = new MenuVistas(baseSeleccionada.Replace("TreeNode: ", ""));
+            mv.ShowDialog();
+            ActualizarArbol();
         }
 
         /// Se llama la ventana de las funciones
@@ -85,6 +88,9 @@ namespace CapaGrafica
         {
             TreeNode n = treeDB.SelectedNode;
             string baseSeleccionada = n.ToString(); //Tiene que tener marcado el nodo de la base de datos
+            MenuFunciones mf = new MenuFunciones(baseSeleccionada.Replace("TreeNode: ", ""));
+            mf.ShowDialog();
+            ActualizarArbol();
         }
 
         ///Se llama la ventana con los triggers
@@ -168,7 +174,15 @@ namespace CapaGrafica
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("FTS Parsers");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("FTS Templates");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Foreign Tables");
-            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Functions");
+            treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Functions");//7
+            List<string> functions = dbbol.CargarVistas("SELECT * FROM pg_proc WHERE pronamespace = 2200;", baseDatos);
+            if (functions.Count > 0)
+            {
+                foreach (string funcion in functions)
+                {
+                    treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes[7].Nodes.Add(funcion);
+                }
+            }
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Materialized Views");
             ContextMenuStrip sequenceMenu = new ContextMenuStrip();
             ToolStripMenuItem aLabel = new ToolStripMenuItem();
@@ -184,17 +198,13 @@ namespace CapaGrafica
 
                 //Console.WriteLine(tabla);
             }
-
             ContextMenuStrip tableMenu = new ContextMenuStrip();
-
             //Create some menu items.
             ToolStripMenuItem oLabel = new ToolStripMenuItem();
             oLabel.Text = "Table Options";
             tableMenu.Items.AddRange(new ToolStripMenuItem[] { oLabel });
             tableMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Table_Click);
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Tables").ContextMenuStrip = tableMenu;
-
-
             //int cont, int v ?
             string[] tablas = AgregarTablas(baseDatos);
             foreach (string tabla in tablas)
@@ -207,8 +217,17 @@ namespace CapaGrafica
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Trigger Functions");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Type");
             treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes.Add("Views");
-            //Faltan metodos que carguen las vistas, las funciones, las tablas...
+            List<string> views = dbbol.CargarVistas("SELECT table_name from INFORMATION_SCHEMA.views WHERE table_schema = 'public';", baseDatos);
+            if (views.Count > 0)
+            {
+                foreach (string view in views)
+                {
+                    treeDB.Nodes[0].Nodes[0].Nodes[0].Nodes[cont].Nodes[6].Nodes[0].Nodes[13].Nodes.Add(view);
+                }
+            }
             
+            //Faltan metodos que carguen las vistas, las funciones, las tablas...
+
         }
         //int cont, int v ?
         private string[] AgregarTablas(string baseDatos)
@@ -341,10 +360,11 @@ namespace CapaGrafica
                     rcOutPut.Text = "Query successfully complete";
                     ActualizarArbol();
                 }
+                dbbol.CerrarConsulta();
             }
             catch (Exception ex)
             {
-
+                dbbol.CerrarConsulta();
                 rcOutPut.Text = ex.Message;
             }
 
